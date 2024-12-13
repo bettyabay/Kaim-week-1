@@ -29,3 +29,18 @@ def extract_common_keywords(df, column='headline', n_keywords=10):
     word_counts = vectorizer.fit_transform(df[column])
     keywords = vectorizer.get_feature_names_out()
     return keywords
+
+
+def display_topics(model, feature_names, no_top_words):
+    """
+    Display the top words for each topic.
+
+    Parameters:
+        model: Trained topic model (e.g., LDA).
+        feature_names: List of feature names from vectorization.
+        no_top_words: Number of top words to display for each topic.
+    """
+    for topic_idx, topic in enumerate(model.components_):
+        print(f"Topic {topic_idx}:")
+        print(" ".join([feature_names[i] for i in topic.argsort()[:-no_top_words - 1:-1]]))
+

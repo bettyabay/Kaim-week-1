@@ -68,6 +68,8 @@ def detect_outliers(df, column, method="iqr"):
     else:
         raise ValueError("Invalid method. Choose 'iqr' or 'zscore'.")
 
+                
+
 def remove_outliers(df, column, method="iqr"):
     """
     Remove outliers from a numerical column.
